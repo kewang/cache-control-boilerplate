@@ -37,13 +37,13 @@ public class Main {
     public static void main(String[] args) {
         HttpServer server = startServer();
 
-        System.out.println(String.format("Jersey app started with WADL available at %sapplication.wadl\nHit 'close' to stop it...", BASE_URI));
+        System.out.println(String.format("Jersey app started with WADL available at %sapplication.wadl\nPress 'stop' to stop it...", BASE_URI));
 
         String ret = "";
 
         Scanner scanner = new Scanner(System.in);
 
-        while (!ret.equalsIgnoreCase("close")) {
+        while (!ret.equalsIgnoreCase("stop")) {
             ret = scanner.next();
         }
 
