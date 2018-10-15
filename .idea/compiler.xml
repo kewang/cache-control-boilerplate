@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="cache-control-sample2" />
+        <module name="cache-control-boilerplate" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="cache-control-sample2" target="1.8" />
+      <module name="cache-control-boilerplate" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
