@@ -31,7 +31,7 @@ public class ArticleResource {
     }
 
     @PUT
-    public Response updateArticle(@Context HttpHeaders httpHeaders, String body) {
+    public Response updateArticle(@Context HttpHeaders httpHeaders) {
         return Response.ok("{'a':'b'}").build();
     }
 }
