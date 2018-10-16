@@ -1,0 +1,24 @@
+<configuration debug="false">
+    <contextName>LogAppender</contextName>
+    <property name="LOG_HOME" value="logs"/>
+    <property name="CHARSET" value="UTF-8"/>
+    <property name="PATTERN" value="%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %highlight(%.-1level) %logger{50}:%L - %msg%n"/>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${LOG_HOME}/parser.log</file>
+        <encoder>
+            <pattern>${PATTERN}</pattern>
+            <charset>${CHARSET}</charset>
+        </encoder>
+    </appender>
+    <root level="DEBUG" additivity="false">
+        <appender-ref ref="HTTP"/>
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
