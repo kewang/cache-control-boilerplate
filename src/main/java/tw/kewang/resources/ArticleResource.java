@@ -34,4 +34,29 @@ public class ArticleResource {
     public Response updateArticle(@Context HttpHeaders httpHeaders, String body) {
         return Response.ok("{'a':'b'}").build();
     }
+
+//    @Override
+//    @MaxAge(3)
+//    @Cache(cacheType = MeChatroomETagCache.class, keyType = KeyType.USER_ID)
+//    public Response getChatrooms(HttpHeaders httpHeaders) {
+//        String userId = SysInfoHolder.getSysInfo().getUserID();
+//
+//        ChatRequest chatRequest = new ChatRequest().setUserID(userId);
+//
+//        ChatResponse chatResponse = Chatroom.GET_GLOBAL.call(chatRequest);
+//
+//        if (chatResponse.isSuccess()) {
+//            MeChatroomETagCache cache = new MeChatroomETagCache();
+//
+//            cache.setKey(userId);
+//
+//            Response res = ResponseUtils.ok(chatResponse.getArgsMap(), cache);
+//
+//            cache.store();
+//
+//            return res;
+//        } else {
+//            return ResponseUtils.badRequestGlobalException();
+//        }
+//    }
 }
