@@ -26,12 +26,12 @@ public class ArticleResource {
     }
 
     @DELETE
-    public Response removeArticle(@Context HttpHeaders httpHeaders, String body) {
+    public Response removeArticle(@Context HttpHeaders httpHeaders) {
         return Response.ok("{'a':'b'}").build();
     }
 
     @PUT
-    public Response updateArticle(@Context HttpHeaders httpHeaders) {
+    public Response updateArticle(@Context HttpHeaders httpHeaders, String body) {
         return Response.ok("{'a':'b'}").build();
     }
 }
