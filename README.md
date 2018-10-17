@@ -8,9 +8,9 @@
 
 `./bin/zk-client.sh`
 
-## Run API server
+## Web server
 
-### First compile code
+### Compile code
 
 `./bin/web-compile.sh`
 
