@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 public class Main {
     private static final Logger LOG = Logger.getLogger(Main.class.getSimpleName());
-    private static final String BASE_URI = "http://localhost:" + System.getenv("PORT") + "/api/";
+    private static final String BASE_URI = "http://localhost:" + System.getProperty("port", "8080") + "/api/";
 
     private static HttpServer startServer() {
         final ResourceConfig rc = new ResourceConfig().packages("tw.kewang");
