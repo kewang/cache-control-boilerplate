@@ -5,7 +5,7 @@ import com.google.common.cache.CacheStats;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.kewang.SysInfoHolder;
+import tw.kewang.UserInfoHolder;
 import tw.kewang.caches.ETagCache;
 import tw.kewang.caches.ETagCache.ETag;
 import tw.kewang.filters.annotations.Cache.KeyType;
@@ -77,7 +77,7 @@ public class ETagRequestFilter implements ContainerRequestFilter {
     private String extractExtraValue(ContainerRequestContext requestContext) {
         switch (cacheExtraType) {
             case USER_ID:
-                return SysInfoHolder.getSysInfo().getUserId();
+                return UserInfoHolder.getUserInfo().userId;
             case HEADER:
                 return requestContext.getHeaderString(cacheExtraValue);
             case PATH_PARAMETER:
@@ -99,7 +99,7 @@ public class ETagRequestFilter implements ContainerRequestFilter {
         for (KeyType type : keyType) {
             switch (type) {
                 case USER_ID:
-                    userId = SysInfoHolder.getSysInfo().getUserId();
+                    userId = UserInfoHolder.getUserInfo().userId;
 
                     break;
                 case HEADER:

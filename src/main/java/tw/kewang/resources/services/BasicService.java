@@ -3,8 +3,8 @@ package tw.kewang.resources.services;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.kewang.SysInfo;
-import tw.kewang.SysInfoHolder;
+import tw.kewang.UserInfo;
+import tw.kewang.UserInfoHolder;
 import tw.kewang.caches.Cacheable;
 import tw.kewang.caches.ETagCache;
 import tw.kewang.resources.requests.BasicRequest;
@@ -29,9 +29,9 @@ public abstract class BasicService<REQ extends BasicRequest, RES extends BasicRe
 
             buildCache(response);
 
-            SysInfo sysInfo = SysInfoHolder.getSysInfo();
+            UserInfo userInfo = UserInfoHolder.getUserInfo();
 
-            LOG.info("UserId: {}, Request: {}, Spend Time: {}us", (sysInfo == null) ? null : sysInfo.getUserId(), (request == null) ? null : request.getClass().getSimpleName(), (System.nanoTime() - startTime) / 1000);
+            LOG.info("UserId: {}, Request: {}, Spend Time: {}us", (userInfo == null) ? null : userInfo.userId, (request == null) ? null : request.getClass().getSimpleName(), (System.nanoTime() - startTime) / 1000);
 
             return (RES) response;
         } catch (Exception e) {

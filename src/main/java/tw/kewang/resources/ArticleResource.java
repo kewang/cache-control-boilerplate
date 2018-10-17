@@ -2,6 +2,10 @@ package tw.kewang.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tw.kewang.caches.GetArticlesETagCache;
+import tw.kewang.filters.annotations.Cache;
+import tw.kewang.filters.annotations.Cache.KeyType;
+import tw.kewang.filters.annotations.MaxAge;
 import tw.kewang.resources.requests.GetArticleRequest;
 import tw.kewang.resources.responses.GetArticleResponse;
 import tw.kewang.resources.responses.ResponseUtils;
@@ -20,6 +24,8 @@ public class ArticleResource {
     private static final Logger LOG = LoggerFactory.getLogger(ArticleResource.class.getSimpleName());
 
     @GET
+    @MaxAge(3)
+    @Cache(cacheType = GetArticlesETagCache.class, keyType = KeyType.USER_ID)
     public Response getArticles(@Context HttpHeaders httpHeaders, @QueryParam("size") @DefaultValue("20") int size) {
         GetArticleRequest request = new GetArticleRequest();
 
@@ -51,7 +57,7 @@ public class ArticleResource {
 //    @MaxAge(3)
 //    @Cache(cacheType = MeChatroomETagCache.class, keyType = KeyType.USER_ID)
 //    public Response getChatrooms(HttpHeaders httpHeaders) {
-//        String userId = SysInfoHolder.getSysInfo().getUserID();
+//        String userId = UserInfoHolder.getUserInfo().getUserID();
 //
 //        ChatRequest chatRequest = new ChatRequest().setUserID(userId);
 //

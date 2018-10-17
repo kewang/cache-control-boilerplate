@@ -3,7 +3,7 @@ package tw.kewang.caches;
 import com.google.common.cache.Cache;
 import tw.kewang.resources.EncryptionUtils;
 
-public class MeChatroomETagCache extends ETagCache {
+public class GetArticlesETagCache extends ETagCache {
     @Override
     public void invalidateAll() {
         ETagCacheManager.invalidateAll(getClass());

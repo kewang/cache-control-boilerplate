@@ -5,8 +5,8 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.logging.LoggingFeature;
 import org.glassfish.jersey.logging.LoggingFeature.Verbosity;
 import org.glassfish.jersey.server.ResourceConfig;
-import tw.kewang.caches.ETagCacheManager;
 import tw.kewang.filters.CacheFilterFactory;
+import tw.kewang.filters.UserInfoFilter;
 
 import java.net.URI;
 import java.util.Scanner;
@@ -21,6 +21,7 @@ public class Main {
         final ResourceConfig rc = new ResourceConfig().packages("tw.kewang");
 
         rc.register(new LoggingFeature(LOG, Level.INFO, Verbosity.PAYLOAD_ANY, null));
+        rc.register(UserInfoFilter.class);
         rc.register(CacheFilterFactory.class);
 
         return GrizzlyHttpServerFactory.createHttpServer(URI.create(BASE_URI), rc);

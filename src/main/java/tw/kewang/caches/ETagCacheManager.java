@@ -32,7 +32,7 @@ public class ETagCacheManager {
     public static void init() {
         CacheBuilder<Object, Object> builder = CacheBuilder.newBuilder().recordStats();
 
-        register(MeChatroomETagCache.class, builder.<String, ETag>build());
+        register(GetArticlesETagCache.class, builder.build());
 
         connectZookeeper();
     }
