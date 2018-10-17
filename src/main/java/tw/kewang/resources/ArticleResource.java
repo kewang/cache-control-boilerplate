@@ -3,8 +3,8 @@ package tw.kewang.resources;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tw.kewang.caches.GetArticlesETagCache;
-import tw.kewang.filters.annotations.Cache;
-import tw.kewang.filters.annotations.Cache.KeyType;
+import tw.kewang.filters.annotations.CacheControl;
+import tw.kewang.filters.annotations.CacheControl.KeyType;
 import tw.kewang.filters.annotations.MaxAge;
 import tw.kewang.resources.requests.GetArticleRequest;
 import tw.kewang.resources.responses.GetArticleResponse;
@@ -25,7 +25,7 @@ public class ArticleResource {
 
     @GET
     @MaxAge(3)
-    @Cache(cacheType = GetArticlesETagCache.class, keyType = KeyType.USER_ID)
+    @CacheControl(cacheType = GetArticlesETagCache.class, keyType = KeyType.USER_ID)
     public Response getArticles(@Context HttpHeaders httpHeaders, @QueryParam("size") @DefaultValue("20") int size) {
         GetArticleRequest request = new GetArticleRequest();
 
@@ -52,29 +52,4 @@ public class ArticleResource {
     public Response updateArticle(@Context HttpHeaders httpHeaders, String body) {
         return Response.ok("{'a':'b'}").build();
     }
-
-//    @Override
-//    @MaxAge(3)
-//    @Cache(cacheType = MeChatroomETagCache.class, keyType = KeyType.USER_ID)
-//    public Response getChatrooms(HttpHeaders httpHeaders) {
-//        String userId = UserInfoHolder.getUserInfo().getUserID();
-//
-//        ChatRequest chatRequest = new ChatRequest().setUserID(userId);
-//
-//        ChatResponse chatResponse = Chatroom.GET_GLOBAL.call(chatRequest);
-//
-//        if (chatResponse.isSuccess()) {
-//            MeChatroomETagCache cache = new MeChatroomETagCache();
-//
-//            cache.setKey(userId);
-//
-//            Response res = ResponseUtils.ok(chatResponse.getArgsMap(), cache);
-//
-//            cache.store();
-//
-//            return res;
-//        } else {
-//            return ResponseUtils.badRequestGlobalException();
-//        }
-//    }
 }

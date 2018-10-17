@@ -2,7 +2,7 @@ package tw.kewang.filters;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tw.kewang.filters.annotations.Cache;
+import tw.kewang.filters.annotations.CacheControl;
 import tw.kewang.filters.annotations.MaxAge;
 
 import javax.annotation.Priority;
@@ -22,10 +22,10 @@ public class CacheFilterFactory implements DynamicFeature {
             context.register(new MaxAgeResponseFilter(maxAge.value(), maxAge.unit()));
         }
 
-        Cache cache = resourceInfo.getResourceMethod().getAnnotation(Cache.class);
+        CacheControl cacheControl = resourceInfo.getResourceMethod().getAnnotation(CacheControl.class);
 
-        if (cache != null) {
-            context.register(new ETagRequestFilter(cache));
+        if (cacheControl != null) {
+            context.register(new ETagRequestFilter(cacheControl));
         }
     }
 }

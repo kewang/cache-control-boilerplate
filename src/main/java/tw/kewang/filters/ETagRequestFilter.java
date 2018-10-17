@@ -8,7 +8,8 @@ import org.slf4j.LoggerFactory;
 import tw.kewang.UserInfoHolder;
 import tw.kewang.caches.ETagCache;
 import tw.kewang.caches.ETagCache.ETag;
-import tw.kewang.filters.annotations.Cache.KeyType;
+import tw.kewang.filters.annotations.CacheControl;
+import tw.kewang.filters.annotations.CacheControl.KeyType;
 import tw.kewang.resources.responses.ResponseUtils;
 
 import javax.ws.rs.container.ContainerRequestContext;
@@ -29,14 +30,14 @@ public class ETagRequestFilter implements ContainerRequestFilter {
     private KeyType cacheExtraType;
     private String cacheExtraValue;
 
-    public ETagRequestFilter(tw.kewang.filters.annotations.Cache cache) {
-        this.cacheType = cache.cacheType();
-        this.keyType = cache.keyType();
-        this.cacheHeaders = cache.headers();
-        this.cachePathParameters = cache.pathParameters();
-        this.cacheQueryParameters = cache.queryParameters();
-        this.cacheExtraType = cache.extraType();
-        this.cacheExtraValue = cache.extraValue();
+    public ETagRequestFilter(CacheControl cacheControl) {
+        this.cacheType = cacheControl.cacheType();
+        this.keyType = cacheControl.keyType();
+        this.cacheHeaders = cacheControl.headers();
+        this.cachePathParameters = cacheControl.pathParameters();
+        this.cacheQueryParameters = cacheControl.queryParameters();
+        this.cacheExtraType = cacheControl.extraType();
+        this.cacheExtraValue = cacheControl.extraValue();
     }
 
     @Override

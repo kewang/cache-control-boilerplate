@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface Cache {
+public @interface CacheControl {
     Class<? extends ETagCache> cacheType();
 
     /**
