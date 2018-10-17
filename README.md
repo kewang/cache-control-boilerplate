@@ -16,7 +16,7 @@
 
 ### Start up web node
 
-`./bin/web-run.sh 8080`
+`./bin/web-run.sh [PORT]`
 
 ## Test
 
