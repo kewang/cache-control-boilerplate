@@ -2,15 +2,21 @@
 
 ### Run server
 
-`./zk-server.sh`
+`./bin/zk-server.sh`
 
 ### Run client
 
-`./zk-client.sh`
+`./bin/zk-client.sh`
 
 ## Run API server
 
-maven-exec-plugin -D
+### First compile code
+
+`./bin/web-compile.sh`
+
+### Start up web node
+
+`./bin/web-run.sh 8080`
 
 ## Test
 
