@@ -10,7 +10,7 @@ public abstract class BasicResponse {
     private static final Logger LOG = LoggerFactory.getLogger(BasicResponse.class);
 
     @SerializedName("result")
-    private boolean result = true;
+    protected boolean result = true;
 
     private transient ETagCache etagCache;
 
@@ -24,6 +24,13 @@ public abstract class BasicResponse {
 
     public BasicResponse setETagCache(ETagCache etagCache) {
         this.etagCache = etagCache;
+
         return this;
+    }
+
+    public static class FailResponse extends BasicResponse {
+        public FailResponse() {
+            result = false;
+        }
     }
 }

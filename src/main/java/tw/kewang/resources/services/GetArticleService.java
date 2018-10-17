@@ -1,6 +1,7 @@
 package tw.kewang.resources.services;
 
 import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import tw.kewang.UserInfoHolder;
 import tw.kewang.caches.Cacheable;
 import tw.kewang.caches.GetArticlesETagCache;
@@ -13,6 +14,15 @@ public class GetArticleService extends BasicService<GetArticleRequest, GetArticl
     protected BasicResponse processing(GetArticleRequest request) throws Exception {
         GetArticleResponse response = new GetArticleResponse();
 
+        retrieveFromDatabase(request, response);
+
+        setCacheKey(UserInfoHolder.getUserInfo().userId);
+        setCacheValue(response.toJson());
+
+        return response;
+    }
+
+    private void retrieveFromDatabase(GetArticleRequest request, GetArticleResponse response) {
         for (int i = 0; i < request.size; i++) {
             GetArticleResponse.Article article = new GetArticleResponse.Article();
 
@@ -22,9 +32,10 @@ public class GetArticleService extends BasicService<GetArticleRequest, GetArticl
             response.articles.add(article);
         }
 
-        setCacheKey(UserInfoHolder.getUserInfo().userId);
-        setCacheValue(response.toJson());
-
-        return response;
+        try {
+            Thread.sleep(RandomUtils.nextInt(500, 1500));
+        } catch (InterruptedException e) {
+            LOG.error("Caught Exception:", e);
+        }
     }
 }

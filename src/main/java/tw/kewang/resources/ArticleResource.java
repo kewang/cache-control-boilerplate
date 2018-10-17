@@ -7,11 +7,14 @@ import tw.kewang.filters.annotations.CacheControl;
 import tw.kewang.filters.annotations.CacheControl.KeyType;
 import tw.kewang.filters.annotations.MaxAge;
 import tw.kewang.resources.requests.CreateArticleRequest;
+import tw.kewang.resources.requests.DeleteArticleRequest;
 import tw.kewang.resources.requests.GetArticleRequest;
 import tw.kewang.resources.responses.CreateArticleResponse;
+import tw.kewang.resources.responses.DeleteArticleResponse;
 import tw.kewang.resources.responses.GetArticleResponse;
 import tw.kewang.resources.responses.ResponseUtils;
 import tw.kewang.resources.services.CreateArticleService;
+import tw.kewang.resources.services.DeleteArticleService;
 import tw.kewang.resources.services.GetArticleService;
 
 import javax.ws.rs.*;
@@ -54,11 +57,12 @@ public class ArticleResource {
 
     @DELETE
     public Response removeArticle(@Context HttpHeaders httpHeaders) {
-        return Response.ok("{'a':'b'}").build();
-    }
+        DeleteArticleRequest request = new DeleteArticleRequest();
 
-    @PUT
-    public Response updateArticle(@Context HttpHeaders httpHeaders, String body) {
-        return Response.ok("{'a':'b'}").build();
+        DeleteArticleService service = new DeleteArticleService();
+
+        DeleteArticleResponse response = service.execute(request);
+
+        return ResponseUtils.ok(response);
     }
 }
