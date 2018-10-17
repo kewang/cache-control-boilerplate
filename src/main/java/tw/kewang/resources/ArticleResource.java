@@ -2,6 +2,10 @@ package tw.kewang.resources;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tw.kewang.resources.requests.GetArticleRequest;
+import tw.kewang.resources.responses.GetArticleResponse;
+import tw.kewang.resources.responses.ResponseUtils;
+import tw.kewang.resources.services.GetArticleService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
@@ -16,8 +20,16 @@ public class ArticleResource {
     private static final Logger LOG = LoggerFactory.getLogger(ArticleResource.class.getSimpleName());
 
     @GET
-    public Response getArticles(@Context HttpHeaders httpHeaders) {
-        return Response.ok("{'a':'b'}").build();
+    public Response getArticles(@Context HttpHeaders httpHeaders, @QueryParam("size") @DefaultValue("20") int size) {
+        GetArticleRequest request = new GetArticleRequest();
+
+        request.size = size;
+
+        GetArticleService service = new GetArticleService();
+
+        GetArticleResponse response = service.execute(request);
+
+        return ResponseUtils.ok(response);
     }
 
     @POST

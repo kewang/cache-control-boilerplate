@@ -1,11 +1,11 @@
-package tw.kewang.resources;
+package tw.kewang.resources.responses;
 
 import com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tw.kewang.caches.ETagCache;
 
-public abstract class BasicResponse implements Response {
+public abstract class BasicResponse {
     private static final Logger LOG = LoggerFactory.getLogger(BasicResponse.class);
 
     private transient ETagCache etagCache;

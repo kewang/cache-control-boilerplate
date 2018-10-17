@@ -1,4 +1,4 @@
-package tw.kewang.resources;
+package tw.kewang.resources.services;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -7,10 +7,13 @@ import tw.kewang.SysInfo;
 import tw.kewang.SysInfoHolder;
 import tw.kewang.caches.Cacheable;
 import tw.kewang.caches.ETagCache;
+import tw.kewang.resources.requests.BasicRequest;
+import tw.kewang.resources.responses.BasicResponse;
+import tw.kewang.resources.SimpleResponse;
 
 import java.lang.reflect.ParameterizedType;
 
-public abstract class BasicService<REQ extends BasicRequest> implements Service<REQ, BasicResponse> {
+public abstract class BasicService<REQ extends BasicRequest, RES extends BasicResponse> {
     protected static final String DIVIDER = "_";
     private static final Logger LOG = LoggerFactory.getLogger(BasicService.class);
 
@@ -18,7 +21,7 @@ public abstract class BasicService<REQ extends BasicRequest> implements Service<
     private String cacheValue;
     private String cacheExtra;
 
-    public BasicResponse execute(REQ request) {
+    public RES execute(REQ request) {
         try {
             long startTime = System.nanoTime();
 
@@ -28,16 +31,13 @@ public abstract class BasicService<REQ extends BasicRequest> implements Service<
 
             SysInfo sysInfo = SysInfoHolder.getSysInfo();
 
-            LOG.info("UserId: {}, Request: {}, Spend Time: {}us",
-                    (sysInfo == null) ? null : sysInfo.getUserId(),
-                    (request == null) ? null : request.getClass().getSimpleName(),
-                    (System.nanoTime() - startTime) / 1000);
+            LOG.info("UserId: {}, Request: {}, Spend Time: {}us", (sysInfo == null) ? null : sysInfo.getUserId(), (request == null) ? null : request.getClass().getSimpleName(), (System.nanoTime() - startTime) / 1000);
 
-            return response;
+            return (RES) response;
         } catch (Exception e) {
             LOG.error("Caught Exception: {}", e);
 
-            return new SimpleResponse().fail(e);
+            return (RES) new SimpleResponse().fail(e);
         }
     }
 

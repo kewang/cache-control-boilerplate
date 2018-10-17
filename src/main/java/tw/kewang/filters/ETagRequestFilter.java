@@ -9,7 +9,7 @@ import tw.kewang.SysInfoHolder;
 import tw.kewang.caches.ETagCache;
 import tw.kewang.caches.ETagCache.ETag;
 import tw.kewang.filters.annotations.Cache.KeyType;
-import tw.kewang.resources.ResponseUtils;
+import tw.kewang.resources.responses.ResponseUtils;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;

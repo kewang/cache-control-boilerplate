@@ -1,4 +1,4 @@
-package tw.kewang.resources;
+package tw.kewang.resources.responses;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
