@@ -2,12 +2,11 @@
 
 ### Run server
 
-DOCKER_VARIABLE=zktest docker-compose up
+`./zk-server.sh`
 
 ### Run client
 
-docker --it
-blahblah
+`./zk-client.sh`
 
 ## Run API server
 
