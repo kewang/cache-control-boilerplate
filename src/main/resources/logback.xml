@@ -10,7 +10,7 @@
         </encoder>
     </appender>
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>${LOG_HOME}/parser.log</file>
+        <file>${LOG_HOME}/access.log</file>
         <encoder>
             <pattern>${PATTERN}</pattern>
             <charset>${CHARSET}</charset>
