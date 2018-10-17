@@ -7,14 +7,13 @@ import tw.kewang.UserInfo;
 import tw.kewang.UserInfoHolder;
 import tw.kewang.caches.Cacheable;
 import tw.kewang.caches.ETagCache;
+import tw.kewang.resources.SimpleResponse;
 import tw.kewang.resources.requests.BasicRequest;
 import tw.kewang.resources.responses.BasicResponse;
-import tw.kewang.resources.SimpleResponse;
 
 import java.lang.reflect.ParameterizedType;
 
 public abstract class BasicService<REQ extends BasicRequest, RES extends BasicResponse> {
-    protected static final String DIVIDER = "_";
     private static final Logger LOG = LoggerFactory.getLogger(BasicService.class);
 
     private String cacheKey;

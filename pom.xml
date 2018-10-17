@@ -7,7 +7,7 @@
     <artifactId>cache-control-boilerplate</artifactId>
     <packaging>jar</packaging>
     <version>0.1.0-SNAPSHOT</version>
-    <name>cache-control-sample2</name>
+    <name>cache-control-boilerplate</name>
 
     <dependencyManagement>
         <dependencies>
@@ -43,6 +43,26 @@
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
             <version>3.4.13</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>log4j</groupId>
+                    <artifactId>log4j</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>log4j-over-slf4j</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
         </dependency>
         <dependency>
             <groupId>org.apache.curator</groupId>
