@@ -46,7 +46,7 @@ public class ETagRequestFilter implements ContainerRequestFilter {
         try {
             cache = (Cache) cacheType.newInstance().getCache();
         } catch (Exception e) {
-            LOG.error("Caught Exception: {}", e);
+            LOG.error("Caught Exception:", e);
         }
 
         if (cache == null) {

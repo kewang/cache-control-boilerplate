@@ -35,7 +35,7 @@ public abstract class BasicService<REQ extends BasicRequest, RES extends BasicRe
 
             return (RES) response;
         } catch (Exception e) {
-            LOG.error("Caught Exception: {}", e);
+            LOG.error("Caught Exception:", e);
 
             return (RES) new SimpleResponse().fail(e);
         }
@@ -80,7 +80,7 @@ public abstract class BasicService<REQ extends BasicRequest, RES extends BasicRe
 
                 cache.invalidate(cacheKey);
             } catch (Exception e) {
-                LOG.error("Caught Exception: {}", e);
+                LOG.error("Caught Exception:", e);
             }
         }
     }
@@ -94,7 +94,7 @@ public abstract class BasicService<REQ extends BasicRequest, RES extends BasicRe
 
                 cache.invalidateAll();
             } catch (Exception e) {
-                LOG.error("Caught Exception: {}", e);
+                LOG.error("Caught Exception:", e);
             }
         }
     }

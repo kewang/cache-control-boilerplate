@@ -16,7 +16,7 @@ public class EncryptionUtils {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (Exception e) {
-            LOG.error("Caught Exception: {}", e);
+            LOG.error("Caught Exception:", e);
         }
 
         byte[] digest = null;

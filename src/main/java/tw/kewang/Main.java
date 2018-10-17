@@ -5,6 +5,7 @@ import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory;
 import org.glassfish.jersey.logging.LoggingFeature;
 import org.glassfish.jersey.logging.LoggingFeature.Verbosity;
 import org.glassfish.jersey.server.ResourceConfig;
+import tw.kewang.caches.ETagCacheManager;
 import tw.kewang.filters.CacheFilterFactory;
 import tw.kewang.filters.UserInfoFilter;
 
@@ -30,7 +31,7 @@ public class Main {
     public static void main(String[] args) {
         HttpServer server = startServer();
 
-//        ETagCacheManager.init();
+        ETagCacheManager.init();
 
         System.out.println(String.format("Jersey app started with WADL available at %sapplication.wadl\nPress 'stop' to stop it...", BASE_URI));
 

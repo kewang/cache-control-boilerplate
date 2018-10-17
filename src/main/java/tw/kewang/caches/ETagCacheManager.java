@@ -34,7 +34,7 @@ public class ETagCacheManager {
 
         register(GetArticlesETagCache.class, builder.build());
 
-        connectZookeeper();
+//        connectZookeeper();
     }
 
     private static void connectZookeeper() {
@@ -53,7 +53,7 @@ public class ETagCacheManager {
         try {
             cache.start();
         } catch (Exception e) {
-            LOG.error("Caught Exception: {}", e);
+            LOG.error("Caught Exception:", e);
         }
     }
 
@@ -120,7 +120,7 @@ public class ETagCacheManager {
                 zkClient.setData().inBackground().forPath(PATH_INVALIDATION, data.getBytes());
             }
         } catch (Exception e) {
-            LOG.error("Caught Exception: {}", e);
+            LOG.error("Caught Exception:", e);
         }
     }
 
