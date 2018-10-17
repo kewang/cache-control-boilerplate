@@ -1,7 +1,6 @@
 package tw.kewang.caches;
 
 import com.google.common.cache.Cache;
-import tw.kewang.resources.EncryptionUtils;
 
 public class GetArticlesETagCache extends ETagCache {
     @Override
@@ -26,6 +25,6 @@ public class GetArticlesETagCache extends ETagCache {
 
     @Override
     public String toHash() {
-        return EncryptionUtils.toMD5String(getValue());
+        return generateMD5(getValue());
     }
 }
