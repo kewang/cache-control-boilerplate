@@ -1,12 +1,16 @@
 package tw.kewang.resources.responses;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tw.kewang.caches.ETagCache;
 
 public abstract class BasicResponse {
     private static final Logger LOG = LoggerFactory.getLogger(BasicResponse.class);
+
+    @SerializedName("result")
+    private boolean result = true;
 
     private transient ETagCache etagCache;
 

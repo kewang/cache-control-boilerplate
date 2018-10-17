@@ -6,9 +6,12 @@ import tw.kewang.caches.GetArticlesETagCache;
 import tw.kewang.filters.annotations.CacheControl;
 import tw.kewang.filters.annotations.CacheControl.KeyType;
 import tw.kewang.filters.annotations.MaxAge;
+import tw.kewang.resources.requests.CreateArticleRequest;
 import tw.kewang.resources.requests.GetArticleRequest;
+import tw.kewang.resources.responses.CreateArticleResponse;
 import tw.kewang.resources.responses.GetArticleResponse;
 import tw.kewang.resources.responses.ResponseUtils;
+import tw.kewang.resources.services.CreateArticleService;
 import tw.kewang.resources.services.GetArticleService;
 
 import javax.ws.rs.*;
@@ -40,7 +43,13 @@ public class ArticleResource {
 
     @POST
     public Response createArticle(@Context HttpHeaders httpHeaders, String body) {
-        return Response.ok("{'a':'b'}").build();
+        CreateArticleRequest request = new CreateArticleRequest();
+
+        CreateArticleService service = new CreateArticleService();
+
+        CreateArticleResponse response = service.execute(request);
+
+        return ResponseUtils.ok(response);
     }
 
     @DELETE

@@ -34,7 +34,7 @@ public class ETagCacheManager {
 
         register(GetArticlesETagCache.class, builder.build());
 
-//        connectZookeeper();
+        connectZookeeper();
     }
 
     private static void connectZookeeper() {
