@@ -27,8 +27,14 @@
 
 ## Test
 
-### Get
+### GET
 
-### Post
+`curl -v -X GET -H "uid: kewang" -H "token: hello" http://localhost:8081/api/articles`
 
-### Delete
+### POST
+
+`curl -v -X POST -H "uid: kewang" -H "token: hello" http://localhost:8081/api/articles`
+
+### DELETE
+
+`curl -v -X DELETE -H "uid: kewang" -H "token: hello" http://localhost:8081/api/articles`
