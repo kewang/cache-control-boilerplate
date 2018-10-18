@@ -12,9 +12,7 @@ import tw.kewang.resources.responses.GetArticleResponse;
 public class GetArticleService extends BasicService<GetArticleRequest, GetArticleResponse> implements Cacheable<GetArticlesETagCache> {
     @Override
     protected BasicResponse processing(GetArticleRequest request) throws Exception {
-        GetArticleResponse response = new GetArticleResponse();
-
-        retrieveFromDatabase(request, response);
+        GetArticleResponse response = retrieveFromDatabase(request);
 
         setCacheKey(UserInfoHolder.getUserInfo().userId);
         setCacheValue(response.toJson());
@@ -22,7 +20,9 @@ public class GetArticleService extends BasicService<GetArticleRequest, GetArticl
         return response;
     }
 
-    private void retrieveFromDatabase(GetArticleRequest request, GetArticleResponse response) {
+    private GetArticleResponse retrieveFromDatabase(GetArticleRequest request) {
+        GetArticleResponse response = new GetArticleResponse();
+
         for (int i = 0; i < request.size; i++) {
             GetArticleResponse.Article article = new GetArticleResponse.Article();
 
@@ -37,5 +37,7 @@ public class GetArticleService extends BasicService<GetArticleRequest, GetArticl
         } catch (InterruptedException e) {
             LOG.error("Caught Exception:", e);
         }
+
+        return response;
     }
 }
