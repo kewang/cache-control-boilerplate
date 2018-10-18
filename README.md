@@ -29,7 +29,7 @@
 
 ### GET someone articles from database
 
-![](https://raw.githubusercontent.com/kewang/cache-control-boilerplate/master/demo/get-1.svg)
+![](./demo/get-1.svg)
 
 ### GET someone articles from cache via ETag
 
