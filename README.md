@@ -33,30 +33,7 @@
 
 ### GET someone articles from cache via ETag
 
-#### Request
-
-`curl -v -X GET -H "If-None-Match: hDpZljKoQHSt+OGuAaZQjA==" -H "uid: kewang" -H "token: hello" http://localhost:8080/api/articles`
-
-#### Result
-
-```sh
-Note: Unnecessary use of -X or --request, GET is already inferred.
-*   Trying 127.0.0.1...
-* Connected to localhost (127.0.0.1) port 8080 (#0)
-> GET /api/articles HTTP/1.1
-> Host: localhost:8080
-> User-Agent: curl/7.47.0
-> Accept: */*
-> If-None-Match: hDpZljKoQHSt+OGuAaZQjA==
-> uid: kewang
-> token: hello
-> 
-< HTTP/1.1 304 Not Modified
-< ETag: "hDpZljKoQHSt+OGuAaZQjA=="
-< Cache-Control: max-age=3
-< 
-* Connection #0 to host localhost left intact
-```
+![](./demo/get-2.png)
 
 ### POST add someone articles
 
