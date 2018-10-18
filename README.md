@@ -41,12 +41,12 @@
 
 ### POST add someone's articles, so invalidate someone's cache
 
-`curl -v -X POST -H "uid: kewang" -H "token: hello" http://localhost:8081/api/articles`
+`curl -v -X POST -H "uid: kewang" -H "token: hello" http://localhost:8080/api/articles`
 
 ![](./demo/post-1.png)
 
 ### DELETE remove everyone's articles, so invalidate everyone's caches
 
-`curl -v -X DELETE -H "uid: kewang" -H "token: hello" http://localhost:8081/api/articles`
+`curl -v -X DELETE -H "uid: kewang" -H "token: hello" http://localhost:8080/api/articles`
 
 ![](./demo/delete-1.png)
