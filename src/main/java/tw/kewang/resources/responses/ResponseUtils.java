@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import tw.kewang.caches.ETagCache;
 
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
 
 public class ResponseUtils {
     private static final Logger LOG = LoggerFactory.getLogger(ResponseUtils.class);
@@ -15,7 +16,7 @@ public class ResponseUtils {
     public static Response ok(BasicResponse response) {
         String json = response.toJson();
 
-        Response.ResponseBuilder responseBuilder = Response.ok(json);
+        ResponseBuilder responseBuilder = Response.ok(json);
 
         ETagCache etagCache = response.getETagCache();
 
